@@ -1,0 +1,599 @@
+1)using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Define and initialize the age and name variables
+        int age = 25;  // Replace with your actual age
+        string name = "John";  // Replace with your actual name
+
+        // Implement a loop that iterates from 1 to 10
+        for (int i = 1; i <= 10; i++)
+        {
+            // Print a message that includes your name and the current loop index
+            Console.WriteLine($"My name is {name}, and the current loop index is {i}");
+        }
+    }
+}
+
+2)using System;
+
+class Person
+{
+    private int age;
+    public string Name { get; set; }
+
+    public Person(int age, string name)
+    {
+        this.age = age;
+        Name = name;
+    }
+
+    public void Introduction()
+    {
+        Console.WriteLine($"Hi, I'm {Name} and I'm {age} years old");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Create an instance of the "Person" class, set its name and age
+        Person person = new Person(25, "John");  // Replace with actual age and name
+
+        // Call the "Introduction" method
+        person.Introduction();
+    }
+}
+
+3)using System;
+
+class Shape
+{
+    protected double Area;
+
+    public Shape()
+    {
+        Area = 0;
+    }
+
+    public virtual void CalculateArea()
+    {
+        // The base class implementation of CalculateArea does nothing.
+    }
+}
+
+class Rectangle : Shape
+{
+    private double _length;
+    private double _width;
+
+    public Rectangle(double length, double width)
+    {
+        _length = length;
+        _width = width;
+    }
+
+    public override void CalculateArea()
+    {
+        Area = _length * _width;
+    }
+}
+
+class Circle : Shape
+{
+    private double _radius;
+
+    public Circle(double radius)
+    {
+        _radius = radius;
+    }
+
+    public override void CalculateArea()
+    {
+        Area = Math.PI * _radius * _radius;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Rectangle rectangle = new Rectangle(5.0, 3.0);
+        Circle circle = new Circle(4.0);
+
+        rectangle.CalculateArea();
+        circle.CalculateArea();
+
+        Console.WriteLine($"Area of Rectangle: {rectangle.Area}");
+        Console.WriteLine($"Area of Circle: {circle.Area}");
+    }
+}
+4) using System;
+
+abstract class Vehicle
+{
+    public abstract void StartEngine();
+}
+
+class Car : Vehicle
+{
+    public override void StartEngine()
+    {
+        Console.WriteLine("Car engine started.");
+    }
+}
+
+class Bicycle : Vehicle
+{
+    public override void StartEngine()
+    {
+        Console.WriteLine("Pedaling the bicycle.");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Vehicle car = new Car();
+        Vehicle bicycle = new Bicycle();
+
+        car.StartEngine();     // Output: Car engine started.
+        bicycle.StartEngine(); // Output: Pedaling the bicycle.
+    }
+}
+5)using System;
+
+class MyList<T>
+{
+    private T[] items;
+    private int count;
+
+    public MyList()
+    {
+        items = new T[10];
+        count = 0;
+    }
+
+    public void Add(T item)
+    {
+        if (count < items.Length)
+        {
+            items[count] = item;
+            count++;
+        }
+        else
+        {
+            // If the array is full, you can handle resizing logic here.
+            Console.WriteLine("The list is full. Cannot add more elements.");
+        }
+    }
+
+    public T Get(int index)
+    {
+        if (index >= 0 && index < count)
+        {
+            return items[index];
+        }
+        else
+        {
+            // Handle index out of bounds error.
+            throw new IndexOutOfRangeException("Index is out of bounds.");
+        }
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        MyList<int> myList = new MyList<int>();
+
+        // Add some elements to the list
+        myList.Add(10);
+        myList.Add(20);
+        myList.Add(30);
+        myList.Add(40);
+
+        // Get and print an element from the list based on a given index
+        int index = 2;
+        try
+        {
+            int element = myList.Get(index);
+            Console.WriteLine($"Element at index {index}: {element}");
+        }
+        catch (IndexOutOfRangeException ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+}
+
+1)using System;
+
+class Program
+{
+    static void Main()
+    {
+        int quantity = 7;
+        string itemName = "Widget";
+
+        for (int i = 1; i <= 5; i++)
+        {
+            Console.WriteLine($"Product: {itemName}, Index: {i}");
+        }
+    }
+}
+2)using System;
+
+class Employee
+{
+    private string _employeeName;
+    public string Salary { get; set; }
+
+    public Employee(string name, string salary)
+    {
+        _employeeName = name;
+        Salary = salary;
+    }
+
+    public void DisplayInfo()
+    {
+        Console.WriteLine($"Hi, I'm {_employeeName} and I earn {Salary} per year.");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Employee employee = new Employee("John", "$50,000");
+        employee.DisplayInfo();
+    }
+}
+3)using System;
+
+class Item
+{
+    protected double Price;
+
+    public Item()
+    {
+        Price = 0;
+    }
+
+    public double CalculateTotalPrice()
+    {
+        return Price;
+    }
+}
+
+class Fruit : Item
+{
+    private double _weightInKg;
+    private double _priceOfOneKg;
+
+    public double WeightInKg
+    {
+        get { return _weightInKg; }
+        set { _weightInKg = value; }
+    }
+
+    public double PriceOfOneKg
+    {
+        get { return _priceOfOneKg; }
+        set { _priceOfOneKg = value; }
+    }
+
+    public Fruit(double weightInKg, double priceOfOneKg)
+    {
+        _weightInKg = weightInKg;
+        _priceOfOneKg = priceOfOneKg;
+    }
+
+    public double CalculateTotalPrice()
+    {
+        return _weightInKg * _priceOfOneKg;
+    }
+}
+
+class Electronics : Item
+{
+    private int _quantity;
+    private double _oneUnitPrice;
+
+    public int Quantity
+    {
+        get { return _quantity; }
+        set { _quantity = value; }
+    }
+
+    public double OneUnitPrice
+    {
+        get { return _oneUnitPrice; }
+        set { _oneUnitPrice = value; }
+    }
+
+    public Electronics(int quantity, double oneUnitPrice)
+    {
+        _quantity = quantity;
+        _oneUnitPrice = oneUnitPrice;
+    }
+
+    public double CalculateTotalPrice()
+    {
+        return _quantity * _oneUnitPrice;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Fruit fruit = new Fruit(2.5, 3.0);  // 2.5 kg of fruit at $3.00 per kg
+        Electronics electronics = new Electronics(10, 50.0);  // 10 units of electronics at $50.00 per unit
+
+        Console.WriteLine($"Total price for fruit: ${fruit.CalculateTotalPrice()}");
+        Console.WriteLine($"Total price for electronics: ${electronics.CalculateTotalPrice()}");
+    }
+}
+4)using System;
+
+abstract class Bird
+{
+    public abstract void MakeSound();
+}
+class Sparrow : Bird
+{
+    public override void MakeSound()
+    {
+        Console.WriteLine("Chirp.");
+    }
+}
+
+class Pigeon : Bird
+{
+    public override void MakeSound()
+    {
+        Console.WriteLine("Coo.");
+    }
+}
+class Program
+{
+    static void Main()
+    {
+        Sparrow sparrow = new Sparrow();
+        Pigeon pigeon = new Pigeon();
+
+        sparrow.MakeSound(); // Output: Chirp.
+        pigeon.MakeSound();  // Output: Coo.
+    }
+}
+5)using System;
+using System.Collections.Generic;
+
+class MyCollection<T>
+{
+    private List<T> items = new List<T>();
+
+    public void AddItem(T item)
+    {
+        items.Add(item);
+    }
+
+    public T GetItem(int index)
+    {
+        if (index >= 0 && index < items.Count)
+        {
+            return items[index];
+        }
+        throw new IndexOutOfRangeException("Index is out of range");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        MyCollection<string> stringCollection = new MyCollection<string>();
+
+        // დაამატეთ რამდენიმე სტრინგი სიაში
+        stringCollection.AddItem("Apple");
+        stringCollection.AddItem("Banana");
+        stringCollection.AddItem("Cherry");
+
+        // მიიღეთ და დაბეჭდეთ სტრინგი მოცემული ინდექსის საფუძველზე
+        int index = 1; // მისამართი 1-ზე
+        string item = stringCollection.GetItem(index);
+        Console.WriteLine($"Item at index {index}: {item}");
+    }
+}
+1)  using System;
+
+class Program
+{
+    static void Main()
+    {
+        int temperature = 22;
+        string city = "YourCityName";
+
+        for (int i = 1; i <= 7; i++)
+        {
+            double fahrenheit = (temperature * 9.0 / 5) + 32;
+            Console.WriteLine($"{city} - Day {i}: Temperature in Fahrenheit = {fahrenheit:F2}°F");
+            temperature += 5; // Increment temperature by 5 for the next day
+        }
+    }
+}
+2)using System;
+
+class Student
+{
+    private int _studentName;
+    public string Grade { get; set; }
+
+    public Student(string name, string grade)
+    {
+        _studentName = name;
+        Grade = grade;
+    }
+
+    public void Greeting()
+    {
+        Console.WriteLine($"Hi, I'm {_studentName} and I'm in grade {Grade}.");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        string studentName = "John"; // შეცვალეთ სტუდენტის სახელი საკუთრის სახელით
+        string grade = "10"; // შეცვალეთ საკუთრის ნიშანი
+
+        Student student = new Student(studentName, grade);
+        student.Greeting();
+    }
+}
+3)using System;
+
+class Figure
+{
+    protected double Area { get; set; }
+
+    public Figure()
+    {
+        Area = 0;
+    }
+}
+
+class Triangle : Figure
+{
+    private double _base;
+    private double _height;
+
+    public Triangle(double triangleBase, double height)
+    {
+        _base = triangleBase;
+        _height = height;
+    }
+
+    public void CalculateArea()
+    {
+        Area = (_base * _height) / 2;
+    }
+}
+
+class Square : Figure
+{
+    private double _sideLength;
+
+    public Square(double sideLength)
+    {
+        _sideLength = sideLength;
+    }
+
+    public void CalculateArea()
+    {
+        Area = _sideLength * _sideLength;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Triangle triangle = new Triangle(4, 6);
+        triangle.CalculateArea();
+        Console.WriteLine("Triangle Area: " + triangle.Area);
+
+        Square square = new Square(5);
+        square.CalculateArea();
+        Console.WriteLine("Square Area: " + square.Area);
+    }
+}
+4)using System;
+
+abstract class Animal
+{
+    public abstract void MakeSound();
+}
+
+class Dog : Animal
+{
+    public override void MakeSound()
+    {
+        Console.WriteLine("Woof.");
+    }
+}
+
+class Cat : Animal
+{
+    public override void MakeSound()
+    {
+        Console.WriteLine("Meow.");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Animal myDog = new Dog();
+        Animal myCat = new Cat();
+
+        myDog.MakeSound(); // გამოაქ "Woof." ტექსტი
+        myCat.MakeSound(); // გამოაქ "Meow." ტექსტი
+    }
+}
+5)using System;
+using System.Collections.Generic;
+
+class MyCollection<T>
+{
+    private List<T> items = new List<T>();
+
+    public void AddItem(T item)
+    {
+        items.Add(item);
+    }
+
+    public T GetItem(int index)
+    {
+        if (index >= 0 && index < items.Count)
+        {
+            return items[index];
+        }
+        else
+        {
+            throw new IndexOutOfRangeException("Index is out of range.");
+        }
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        MyCollection<string> myStrings = new MyCollection<string>();
+
+        // დაამატეთ ელემენტები "MyCollection"-ში
+        myStrings.AddItem("Apple");
+        myStrings.AddItem("Banana");
+        myStrings.AddItem("Cherry");
+
+        // დაამატეთ რამდენიმე სხვა ელემენტი
+
+        // ამოიღეთ და დაბეჭდეთ ელემენტები
+        Console.WriteLine("Item at index 0: " + myStrings.GetItem(0));
+        Console.WriteLine("Item at index 1: " + myStrings.GetItem(1));
+        Console.WriteLine("Item at index 2: " + myStrings.GetItem(2));
+
+        // ცალკე მცდარი ინდექსი
+        // Console.WriteLine("Item at index 3: " + myStrings.GetItem(3));  // გამოაქვს IndexOutOfRangeException
+    }
+}
+
